@@ -1,0 +1,2 @@
+enum ScreenState { LOADING, ERROR, DATA_LOADED }
+enum ERROR { NO_INTERNET, API_ERROR }
