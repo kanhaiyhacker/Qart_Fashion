@@ -286,9 +286,9 @@ class Products {
     data['SizeWiseStock'] = this.sizeWiseStock;
     data['OfferMonths'] = this.offerMonths?.join(",");
     data['ProductClass'] = this.productClass;
-    data['Promoted'] = this.promoted;
-    data['Secondary'] = this.secondary;
-    data['Deactivated'] = this.deactivated;
+    data['Promoted'] = this.promoted ?? false ? 1 : 0;
+    data['Secondary'] = this.secondary ?? false ? 1 : 0;
+    data['Deactivated'] = this.deactivated ?? false ? 1 : 0;
     data['DefaultSize'] = this.defaultSize;
     data['Material'] = this.material;
     data['Quality'] = this.quality;
@@ -301,12 +301,12 @@ class Products {
     data['DemandType'] = this.demandType;
     data['Image'] = this.image;
     data['ImageUrl'] = this.imageUrl;
-    data['AdShoot'] = this.adShoot;
+    data['AdShoot'] = this.adShoot ?? false ? 1 : 0;
     data['Technology'] = this.technology;
     data['ImageAlt'] = this.imageAlt;
     data['TechnologyImage'] = this.technologyImage;
     data['TechnologyImageUrl'] = this.technologyImageUrl;
-    data['IsCore'] = this.isCore;
+    data['IsCore'] = this.isCore ?? false ? 1 : 0;
     data['MinimumArticleQuantity'] = this.minimumArticleQuantity;
     data['Likeabilty'] = this.likeabilty;
     data['BrandRank'] = this.brandRank;

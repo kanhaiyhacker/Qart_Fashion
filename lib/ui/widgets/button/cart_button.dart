@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qart_fashion/utilities/app_colors.dart';
+import 'package:qart_fashion/utilities/app_dimens.dart';
 import 'package:qart_fashion/utilities/app_string.dart';
 
 class CartButton extends StatelessWidget {
@@ -11,15 +12,16 @@ class CartButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Container(
+          margin: EdgeInsets.only(right: cart_button_right_margin),
       decoration: BoxDecoration(
-          color: accentColor, borderRadius: BorderRadius.circular(20)),
+          color: accentColor, borderRadius: BorderRadius.circular(cart_button_border_radius)),
       child: Material(
           color: Colors.transparent,
           child: InkWell(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(cart_button_border_radius),
               onTap: () {},
               child: Container(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(padding_all),
                   decoration: BoxDecoration(),
                   child: Text(
                     btn_label_add_to_cart,

@@ -5,6 +5,7 @@ const String alert_no_internet_connection = "No Internet Connection";
 const String no_internet_message =
     "Please check your internet connection and try again!";
 const String alert_no_local_data = "Please load data to use this functionality";
+const String alert_loading_data_products = "Data is loading or encounter some error";
 
 // button text
 const String btn_label_try_again = "Try Again";

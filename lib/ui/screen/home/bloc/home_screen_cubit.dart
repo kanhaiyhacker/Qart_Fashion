@@ -20,19 +20,19 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
       int count = await pref.getProductCount();
       emit(DataLoadedState(count));
     } else {
-      try {
-        await reloadProducts();
-      } on NoInternetException catch (e) {
-        emit(ErrorState(ERROR.NO_INTERNET, e.toString()));
-      } catch (e) {
-        emit(ErrorState(ERROR.API_ERROR, e.toString()));
-      }
+      await reloadProducts();
     }
   }
 
   Future<void> reloadProducts() async {
     emit(LoadingState());
-    int count = await appRepository.getDataFromRemote();
-    emit(DataLoadedState(count));
+    try {
+      int count = await appRepository.getDataFromRemote();
+      emit(DataLoadedState(count));
+    } on NoInternetException catch (e) {
+      emit(ErrorState(ERROR.NO_INTERNET, e.toString()));
+    } catch (e) {
+      emit(ErrorState(ERROR.API_ERROR, e.toString()));
+    }
   }
 }

@@ -18,6 +18,10 @@ const double button_border = 30;
 //padding
 const double padding_all = 8;
 
+//border radius
+const double cart_button_border_radius = 20;
+const double cart_button_right_margin = 10;
+
 //vertical margin in column
 const double vertical_margin_height = 10;
 const double vertical_desc_margin_height = 10;

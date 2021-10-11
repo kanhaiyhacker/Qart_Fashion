@@ -34,11 +34,16 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text(app_name),
         actions: [
-          IconButton(
-              onPressed: () {
-                optionSearchScreen();
-              },
-              icon: Icon(Icons.search))
+          BlocBuilder<HomeScreenCubit, HomeScreenState>(
+            builder: (context, state) => IconButton(
+                onPressed: () {
+                  if (state is LoadingState || state is ErrorState) {
+                    showErrorSnackBar(alert_loading_data_products);
+                  } else
+                    optionSearchScreen();
+                },
+                icon: Icon(Icons.search)),
+          )
         ],
       ),
       body: BlocBuilder<HomeScreenCubit, HomeScreenState>(
@@ -108,8 +113,12 @@ class _HomeScreenState extends State<HomeScreen> {
     if (dataLoad) {
       Navigator.of(context).pushNamed(search_route);
     } else {
-      final snackBar = SnackBar(content: Text(alert_no_local_data));
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      showErrorSnackBar(alert_no_local_data);
     }
+  }
+
+  void showErrorSnackBar(String message) {
+    final snackBar = SnackBar(content: Text(message));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
